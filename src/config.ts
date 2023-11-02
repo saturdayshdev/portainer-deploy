@@ -5,7 +5,7 @@ const parsePontainerConfig = async (): Promise<PortainerConfig> => {
   const baseUrl = core.getInput('url', { required: true })
   const username = core.getInput('username', { required: true })
   const password = core.getInput('password', { required: true })
-  const endpointId = parseInt(core.getInput('endpoint', { required: true }))
+  const endpointId = Number(core.getInput('endpoint', { required: true }))
 
   return {
     baseUrl,
