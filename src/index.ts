@@ -19,12 +19,14 @@ const run = async (): Promise<void> => {
     await portainer.authenticate()
     core.endGroup()
 
-    core.startGroup('Deploy Stack')
+    core.startGroup('Check Stack')
     const stacks = await portainer.stacks.getAll({
       endpointId: portainerConfig.endpointId,
     })
-
     const stackExists = stacks.some((stack) => stack.Name === stackConfig.name)
+    core.endGroup()
+
+    core.startGroup('Deploy Stack')
     if (stackExists) {
       await portainer.stacks.update({
         endpointId: portainerConfig.endpointId,
