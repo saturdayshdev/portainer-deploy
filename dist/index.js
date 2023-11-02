@@ -32747,12 +32747,6 @@ const run = async () => {
         });
         const stackExists = stacks.some((stack) => stack.Name === stackConfig.name);
         core.endGroup();
-        core.info(JSON.stringify({
-            endpointId: portainerConfig.endpointId,
-            stackName: stackConfig.name,
-            stackFileContent: stackConfig.composeFile,
-            env,
-        }));
         core.startGroup('Deploy Stack');
         if (stackExists) {
             await portainer.stacks.update({
@@ -32766,7 +32760,7 @@ const run = async () => {
         else {
             await portainer.stacks.createStandalone({
                 endpointId: portainerConfig.endpointId,
-                stackName: stackConfig.name,
+                name: stackConfig.name,
                 stackFileContent: stackConfig.composeFile,
                 env,
             });
