@@ -32749,17 +32749,37 @@ const run = async () => {
         core.endGroup();
         core.startGroup('Deploy Stack');
         if (existingStack) {
+            core.debug(JSON.stringify({
+                id: existingStack.id,
+                endpointId: portainerConfig.endpointId,
+                stackConfig: {
+                    stackFileContent: stackConfig.composeFile,
+                    pullImage: stackConfig.pullImage,
+                    prune: stackConfig.prune,
+                    env,
+                }
+            }));
             await portainer.stacks.update({
                 id: existingStack.id,
                 endpointId: portainerConfig.endpointId,
                 stackConfig: {
                     stackFileContent: stackConfig.composeFile,
+                    pullImage: stackConfig.pullImage,
+                    prune: stackConfig.prune,
                     env,
                 }
             });
             core.info('Stack Updated');
         }
         else {
+            core.debug(JSON.stringify({
+                endpointId: portainerConfig.endpointId,
+                stackConfig: {
+                    name: stackConfig.name,
+                    stackFileContent: stackConfig.composeFile,
+                    env,
+                }
+            }));
             await portainer.stacks.createStandalone({
                 endpointId: portainerConfig.endpointId,
                 stackConfig: {
