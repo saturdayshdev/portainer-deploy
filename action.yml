@@ -1,4 +1,4 @@
-name: @saturdayshdev/portainer-deploy
+name: saturdayshdev/portainer-deploy
 description: GitHub Action for deploying standalone stacks on Portainer.
 
 inputs:
