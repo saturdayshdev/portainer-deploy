@@ -35,3 +35,7 @@ inputs:
 runs:
   using: node18
   main: dist/index.js
+
+branding:
+  icon: upload-cloud
+  color: green
