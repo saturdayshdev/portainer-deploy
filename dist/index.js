@@ -32750,7 +32750,7 @@ const run = async () => {
         core.startGroup('Deploy Stack');
         if (existingStack) {
             core.debug(JSON.stringify({
-                id: existingStack.id,
+                id: existingStack.Id,
                 endpointId: portainerConfig.endpointId,
                 stackConfig: {
                     stackFileContent: stackConfig.composeFile,
@@ -32760,7 +32760,7 @@ const run = async () => {
                 }
             }));
             await portainer.stacks.update({
-                id: existingStack.id,
+                id: existingStack.Id,
                 endpointId: portainerConfig.endpointId,
                 stackConfig: {
                     stackFileContent: stackConfig.composeFile,
