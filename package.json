@@ -5,13 +5,14 @@
   "description": "",
   "main": "dist/index.js",
   "scripts": {
-    "build": "tsc"
+    "build": "ncc build src/index.ts --source-map --out dist"
   },
   "keywords": [],
   "author": "Oskar Wójcikiewicz <oskar@saturdaysheroes.dev>",
   "license": "MIT",
   "devDependencies": {
     "@types/node": "^20.8.10",
+    "@vercel/ncc": "^0.38.1",
     "typescript": "^5.2.2"
   },
   "dependencies": {
