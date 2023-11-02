@@ -9,8 +9,8 @@ dependencies:
     specifier: ^1.10.1
     version: 1.10.1
   '@saturdayshdev/portainer-client':
-    specifier: ^0.1.1
-    version: 0.1.1
+    specifier: ^0.2.0
+    version: 0.2.0
 
 devDependencies:
   '@types/node':
@@ -41,8 +41,8 @@ packages:
     engines: {node: '>=14'}
     dev: false
 
-  /@saturdayshdev/portainer-client@0.1.1:
-    resolution: {integrity: sha512-pD91dSkOVRJ4eu2/WiKMfAxN06zJLrfhkS1Btovta+TMKhpIg5ClCzTim09yaQHwWlVcHWC+/zAAgUe63syGuQ==}
+  /@saturdayshdev/portainer-client@0.2.0:
+    resolution: {integrity: sha512-qRYgmd+eFyJQYX4JDXwYvYwFzMghJ+NVOP7wDTYBDFzoVg9P6dNYfGzqS+u89hNSwgbCpgxjKCoFgMG0IjKz8A==}
     dependencies:
       axios: 1.6.0
       jwt-decode: 4.0.0

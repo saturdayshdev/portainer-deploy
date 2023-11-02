@@ -15,10 +15,11 @@ const parsePontainerConfig = async (): Promise<PortainerConfig> => {
   }
 }
 
-const parseEnv = async (): Promise<StackEnv[]> => {
+const parseEnv = async (): Promise<StackEnv[] | null> => {
   const env = core.getInput('env')
-  const envs = env.split('\n')
+  if (!env) return undefined
 
+  const envs = env.split('\n')
   return envs.map((env) => {
     const [key, value] = env.split('=')
 
