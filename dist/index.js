@@ -32745,7 +32745,7 @@ const run = async () => {
         const stacks = await portainer.stacks.getAll({
             endpointId: portainerConfig.endpointId,
         });
-        const existingStack = stacks.some((stack) => stack.Name === stackConfig.name);
+        const existingStack = stacks.find((stack) => stack.Name === stackConfig.name);
         core.debug(JSON.stringify(stacks));
         core.debug(JSON.stringify(existingStack));
         core.endGroup();
