@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "declaration": true,
+    "removeComments": true,
+    "target": "es2017",
+    "outDir": "./dist"
+  },
+  "include": ["src/**/*"],
+  "ts-node": {
+    "files": true
+  }
+}
