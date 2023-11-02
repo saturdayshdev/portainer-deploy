@@ -1,0 +1,37 @@
+name: @saturdayshdev/portainer-deploy
+description: GitHub Action for deploying standalone stacks on Portainer.
+
+inputs:
+  url:
+    description: 'Portainer API URL'
+    required: true
+  username:
+    description: 'Portainer username'
+    required: true
+  password:
+    description: 'Portainer password'
+    required: true
+  endpoint:
+    description: 'Portainer environment ID'
+    required: true
+  name:
+    description: 'Stack name'
+    required: true
+  path:
+    description: 'Path to docker compose file'
+    required: true
+  pull:
+    description: 'Pull images'
+    required: false
+    default: true
+  prune:
+    description: 'Prune services that are no longer referenced'
+    required: false
+    default: false
+  env:
+    description: 'Environment variables'
+    required: false
+
+runs:
+  using: node18
+  main: dist/index.js
