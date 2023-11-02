@@ -26,25 +26,32 @@ const run = async (): Promise<void> => {
     const stackExists = stacks.some((stack) => stack.Name === stackConfig.name)
     core.endGroup()
 
+    core.info(JSON.stringify({
+      endpointId: portainerConfig.endpointId,
+      stackName: stackConfig.name,
+      stackFileContent: stackConfig.composeFile,
+      env,
+    }))
+
     core.startGroup('Deploy Stack')
     if (stackExists) {
-      const res = await portainer.stacks.update({
+      await portainer.stacks.update({
         endpointId: portainerConfig.endpointId,
         stackId: stackConfig.name,
         stackFileContent: stackConfig.composeFile,
         env,
       })
-      core.info(JSON.stringify(res))
+
       core.info('Stack Updated')
     } 
     else {
-      const res = await portainer.stacks.createStandalone({
+      await portainer.stacks.createStandalone({
         endpointId: portainerConfig.endpointId,
         stackName: stackConfig.name,
         stackFileContent: stackConfig.composeFile,
         env,
       })
-      core.info(JSON.stringify(res))
+
       core.info('Stack Created')
     }
 
