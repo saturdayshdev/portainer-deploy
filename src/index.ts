@@ -15,7 +15,7 @@ const run = async (): Promise<void> => {
       baseUrl: portainerConfig.baseUrl,
       username: portainerConfig.username,
       password: portainerConfig.password,
-    })
+    }) 
     await portainer.authenticate()
     core.endGroup()
 
@@ -28,21 +28,23 @@ const run = async (): Promise<void> => {
 
     core.startGroup('Deploy Stack')
     if (stackExists) {
-      await portainer.stacks.update({
+      const res = await portainer.stacks.update({
         endpointId: portainerConfig.endpointId,
         stackId: stackConfig.name,
         stackFileContent: stackConfig.composeFile,
         env,
       })
+      core.info(JSON.stringify(res))
       core.info('Stack Updated')
     } 
     else {
-      await portainer.stacks.createStandalone({
+      const res = await portainer.stacks.createStandalone({
         endpointId: portainerConfig.endpointId,
         stackName: stackConfig.name,
         stackFileContent: stackConfig.composeFile,
         env,
       })
+      core.info(JSON.stringify(res))
       core.info('Stack Created')
     }
 
