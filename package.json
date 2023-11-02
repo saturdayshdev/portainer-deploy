@@ -1,6 +1,6 @@
 {
   "name": "@saturdayshdev/portainer-deploy",
-  "version": "0.1.0",
+  "version": "1.2.0",
   "repository": "https://github.com/saturdayshdev/portainer-client",
   "description": "",
   "main": "dist/index.js",
