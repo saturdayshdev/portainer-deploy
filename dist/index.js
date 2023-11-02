@@ -28058,8 +28058,8 @@ const parseEnv = async () => {
         return undefined;
     const envs = env.split('\n');
     return envs.map((env) => {
-        const [key, value] = env.split('=');
-        return { key, value };
+        const [name, value] = env.split('=');
+        return { name, value };
     });
 };
 exports.parseEnv = parseEnv;

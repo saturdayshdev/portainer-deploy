@@ -21,9 +21,9 @@ const parseEnv = async (): Promise<StackEnv[] | null> => {
 
   const envs = env.split('\n')
   return envs.map((env) => {
-    const [key, value] = env.split('=')
+    const [name, value] = env.split('=')
 
-    return { key, value }
+    return { name, value }
   })
 }
 
