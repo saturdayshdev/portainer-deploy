@@ -32751,18 +32751,22 @@ const run = async () => {
         if (stackExists) {
             await portainer.stacks.update({
                 endpointId: portainerConfig.endpointId,
-                stackId: stackConfig.name,
-                stackFileContent: stackConfig.composeFile,
-                env,
+                stackConfig: {
+                    stackId: stackConfig.name,
+                    stackFileContent: stackConfig.composeFile,
+                    env,
+                }
             });
             core.info('Stack Updated');
         }
         else {
             await portainer.stacks.createStandalone({
                 endpointId: portainerConfig.endpointId,
-                name: stackConfig.name,
-                stackFileContent: stackConfig.composeFile,
-                env,
+                stackConfig: {
+                    name: stackConfig.name,
+                    stackFileContent: stackConfig.composeFile,
+                    env,
+                }
             });
             core.info('Stack Created');
         }
