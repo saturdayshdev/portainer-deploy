@@ -23,15 +23,15 @@ const run = async (): Promise<void> => {
     const stacks = await portainer.stacks.getAll({
       endpointId: portainerConfig.endpointId,
     })
-    const stackExists = stacks.some((stack) => stack.Name === stackConfig.name)
+    const existingStack = stacks.some((stack) => stack.Name === stackConfig.name)
     core.endGroup()
 
     core.startGroup('Deploy Stack')
-    if (stackExists) {
+    if (existingStack) {
       await portainer.stacks.update({
+        id: existingStack.id,
         endpointId: portainerConfig.endpointId,
         stackConfig: {
-          stackId: stackConfig.name,
           stackFileContent: stackConfig.composeFile,
           env,
         }
